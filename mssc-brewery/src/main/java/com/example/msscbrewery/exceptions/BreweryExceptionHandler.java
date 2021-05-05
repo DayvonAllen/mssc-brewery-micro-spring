@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 @RestControllerAdvice
@@ -17,7 +17,7 @@ public class BreweryExceptionHandler {
         String[] errors = e.getMessage().split(",");
         return new ResponseEntity<>(ErrorMessage.builder()
                 .messages(Arrays.asList(errors))
-                .time(LocalDateTime.now())
+                .time(OffsetDateTime.now())
                 .build(),
                 HttpStatus.BAD_REQUEST);
     }
@@ -27,7 +27,7 @@ public class BreweryExceptionHandler {
         String[] errors = e.getMessage().split(",");
         return new ResponseEntity<>(ErrorMessage.builder()
                 .messages(Arrays.asList(errors))
-                .time(LocalDateTime.now())
+                .time(OffsetDateTime.now())
                 .build(),
                 HttpStatus.BAD_REQUEST);
     }

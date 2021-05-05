@@ -2,13 +2,10 @@ package com.example.msscbrewery.service;
 
 import com.example.msscbrewery.model.BeerDto;
 import com.example.msscbrewery.model.BeerStyleEnum;
-import com.example.msscbrewery.model.BeerStyleEnumValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-
-import static com.example.msscbrewery.model.BeerStyleEnumValue.*;
 
 @Service
 @Slf4j

@@ -1,0 +1,18 @@
+{
+  "properties": [
+    {
+      "name": "sfg.brewery.customerpath",
+      "type": "java.lang.String",
+      "description": "Description for sfg.brewery.customerpath."
+    },
+    {
+      "name": "sfg.brewery.beerpath",
+      "type": "java.lang.String",
+      "description": "Description for sfg.brewery.beerpath."
+    },
+    {
+      "name": "sfg.brewery.apihost",
+      "type": "java.lang.String",
+      "description": "Description for sfg.brewery.apihost."
+    }
+  ] }

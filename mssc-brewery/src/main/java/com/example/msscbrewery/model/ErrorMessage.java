@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,5 +16,5 @@ import java.util.List;
 @Builder
 public class ErrorMessage {
     private List<String> messages = new ArrayList<>();
-    private LocalDateTime time;
+    private OffsetDateTime time;
 }
