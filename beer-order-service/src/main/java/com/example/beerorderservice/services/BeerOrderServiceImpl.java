@@ -60,7 +60,7 @@ public class BeerOrderServiceImpl implements BeerOrderService {
 
     @Transactional
     @Override
-    public BeerOrderDto placeOrder(UUID customerId, BeerOrderDto beerOrderDto) {
+    public synchronized BeerOrderDto placeOrder(UUID customerId, BeerOrderDto beerOrderDto) {
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
 
         if (customerOptional.isPresent()) {
@@ -70,13 +70,13 @@ public class BeerOrderServiceImpl implements BeerOrderService {
             beerOrder.setOrderStatus(OrderStatusEnum.NEW);
 
 
-//            if(beerOrder.getBeerOrderLines() != null) {
-//                beerOrder.getBeerOrderLines().forEach(line -> line.setBeerOrder(beerOrder));
-//            }
+            beerOrder.getBeerOrderLines().forEach(line -> {
+                line.setBeerOrder(beerOrder);
+            });
 
-            BeerOrder savedBeerOrder = beerOrderRepository.saveAndFlush(beerOrder);
+            BeerOrder savedBeerOrder = beerOrderRepository.save(beerOrder);
 
-            log.debug("Saved Beer Order: " + beerOrder.getId());
+            log.info("Saved Beer Order: " + beerOrder.getId());
 
             //todo impl
             //  publisher.publishEvent(new NewBeerOrderEvent(savedBeerOrder));
